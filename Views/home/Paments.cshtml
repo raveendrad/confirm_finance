@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Paments";
+    Layout = "~/Views/shared/_LayoutPage2.cshtml";
+}
+
+
+<link href="~/assets/css/templatemo-finance-business.css" rel="stylesheet" />
+
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+
+<!-- Page Content -->
+<div  style="background: #A020F0;">
+    <div class="container vh-100">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="more-info about-info ">
+
+                    <div class="more-info-content pb-20 ">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 p-0 text-center text-white justify-content-center">
+                                <img src="~/assets/img/thankyou1.gif" style="height:120px" />
+
+                                <h2 class="py-2">
+                                    Thank You for chosing us
+                                </h2>
+                                <h5 class="py-3   text-center">
+                                    Based on your profile
+                                    we estimate that that
+                                    your loan can be
+                                    settled between<a class="nav-link font-bold "><strong id="relfLowrEnd"></strong></a>
+                                    to <a class="nav-link font-bold "><strong id="relHigherEnd"></strong></a> of the
+                                    outstanding amount
+                                </h5>
+                                <h6 class=" text-white-50  text-center" >
+                                    *Please note exact
+                                    settlement will be based
+                                    on review of details you
+                                    have provided, loan
+                                    documents, discussion
+                                    with your lender, credit
+                                    history with other lenders,
+                                    etc.
+                                </h6>
+                                <button class="btn bg-white text-black-50 font-weight-bold m-4" id="btnPayement">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var custId = localStorage.getItem("customer_id");
+        $.ajax({
+            url: 'https://localhost:44306/api/Customer?customer_id=' + custId,
+            type: 'GET',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+                //runLoader("#modal-body", "Loading '<b>" + $("#hf_name_" + id + "").val() + "'</b>...");
+                //clearEntry();
+            },
+            success: function (result) {
+                //stopLoader("#modal-body");
+                localStorage.setItem("custMobile", result[0].mobile_number);
+                localStorage.setItem("email", result[0].email);
+                localStorage.setItem("name", result[0].name);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            },
+            complete: function () {
+            },
+        });
+        $("#relfLowrEnd").text(localStorage.getItem("relfLowrEnd") + " %");
+        $("#relHigherEnd").text(localStorage.getItem("relHigherEnd") + " %");
+
+        $("#btnPayement").click(function () {
+            var receipt = localStorage.getItem("custName") + Math.random() * 10;
+            //func subscibe ok function of only ajax
+            //u need to another ajax here to get the api values
+            var amount = localStorage.getItem("subscriptionfee");
+            var requestData =
+            {
+                "amount": amount,//u can put api valu directly over here this
+                "currency": "INR",
+                "receipt": receipt,
+
+            };
+            var jsonData = JSON.stringify(requestData);
+            $.ajax({
+                url: '/PaymentGateway/CreateOrder',
+                type: 'POST',
+                dataType: 'json',
+                data: jsonData,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                },
+                success: function (result) {
+
+                    console.log(result);
+                    localStorage.setItem('orderId', result.orderId);
+                    localStorage.setItem('razorpayKey', result.razorpayKey);
+                    localStorage.setItem('amount', result.amount);
+                    localStorage.setItem('currency', result.currency);
+                    window.location.href = '/home/Checkout';
+                },
+
+            });
+        });
+    });
+</script>
+
+
+

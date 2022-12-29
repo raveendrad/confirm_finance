@@ -1,0 +1,373 @@
+﻿
+@{
+    ViewBag.Title = "CustomerInfo";
+    Layout = "~/Views/shared/_LayoutPage2.cshtml";
+}
+<script src="~/assets/site_js/Register.js"></script>
+<link href="~/assets/css/templatemo-finance-business.css" rel="stylesheet" />
+<script src="~/assets/site_js/LoanInformation.js"></script>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<style>
+    label {
+        margin-bottom: 0px !important;
+    }
+
+    .form-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-check-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        font-size: 12px;
+    }
+
+    .col-lg-6 {
+        margin-top: 0px
+    }
+
+    input[type] {
+        border-radius: 5px;
+    }
+
+    .form-check {
+        margin-right: 0px;
+    }
+
+    .form-control-label {
+        font-weight: bold;
+    }
+
+    .modal-dialog {
+        margin-top: 80px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<div class="page-heading1 header-text">
+    <div class="container">
+
+    </div>
+</div>
+
+
+<div class="container-fluid" id="Cinfo">
+    <div class="row">
+        <div class="col-6">
+            <div class="card p-4 mt-5">
+                <div class="row g-3">
+                    <div class="col-12 mb-4">
+                        <h3 class="font-bold">Personal details...</h3>
+
+                    </div>
+                    <input type="hidden" value="0" id="customer_id" />
+                    <div class="col-lg-6 col-md-12 ">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Full Name<span style="color:#ff0000">*</span></label>
+                            <input type="text" id="cname" class="form-control form-control-lg shadow" placeholder="Enter Full Name" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 ">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Mobile Number<span style="color:#ff0000">*</span></label>
+                            <input type="number" id="contact_number" class="form-control form-control-lg shadow" placeholder="Enter Mobile Number" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">E-mail Id<span style="color:#ff0000">*</span></label>
+
+                            <input type="email" id="email" class="form-control form-control-lg shadow" placeholder="Enter your Email-Id" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Monthly Income</label>
+
+                            <input type="text" id="your_earning_per_month" class="form-control form-control-lg shadow" placeholder="Enter Monthly Income" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Full Address</label>
+
+                            <input type="text" id="full_address" class="form-control shadow form-control-lg" placeholder="Enter Full Address" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev5">Pin Code<span style="color:#ff0000">*</span></label>
+
+                            <input type="number" id="pincode" placeholder="Enter your pin code" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">City</label>
+
+                            <input type="text" id="city" class="form-control shadow form-control-lg" placeholder="Enter your City" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev5">State</label>
+
+                            <input type="text" id="state" class="form-control shadow form-control-lg" placeholder="Enter your state" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Aadhaar Card<span style="color:#ff0000">*</span></label>
+
+                            <input type="number" id="adhaar_card" placeholder="Enter your Aadhaar number" onKeyPress="if(this.value.length==12) return false;" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Pan Card<span style="color:#ff0000">*</span></label>
+
+                            <input type="text" id="pan_card" placeholder="Enter your Pan card number" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+                    <p id="msg" class="alert-danger"></p>
+                    <div class="col-12 mt-4">
+                        <button type="button" class="btn text-white m-4" style="background: #A020F0" onclick="saveItem();" data-mdb-ripple-color="dark">Save</button>
+                        <button class="btn btn-outline-light   shadow " style="background: #A020F0" type="submit" data-bs-toggle="modal" data-bs-target="#loaninfo">Add Loan</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6 mt-5">
+            <div class="col-lg-8 " style="position:relative;display:inline;">
+                <div>
+                    <div id="content_area">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="modal" id="loaninfo" role="dialog">
+        <div class="modal-dialog  modal-lg " role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title font-bold">Please Enter Loan Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="card p-4 ">
+                            <div class="row g-3" style="line-height:40px;">
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <input type="hidden" id="loan_information_id" value="0">
+                                        <label class="form-label">Type of lender<span style="color:#ff0000">*</span></label>
+                                        <select class="form-control h-10" id="lender_type">
+                                            <option value="">Select lender type</option>
+                                            <option value="Digital/Online">Digital/Online</option>
+                                            <option value="Traditional/Offline">Traditional/Offline</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Loan service provider</label>
+                                        <select class="form-control h-10" value="" id="Loanprovider_head" placeholder="Select Regulated Entity">
+                                        </select>
+                                    </div>
+                                </div>
+                                @*<div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Loan service provider</label>
+                                        <input type="text" id="loan_service_provider" placeholder="Enter Loan Service Provider" class="form-control"/>
+                                    </div>
+                                </div>*@
+
+                                @*<div class="col-lg-6 col-md-12">
+            <div>
+                <label class="form-label">Loan service provider</label>
+                <select class="form-control h-10" id="loan_service_provider">
+                    <option value="0">Select loan Service Provider</option>
+                    <option value="List Not Provided">List Not Provided</option>
+                    <option value="List Will Provide">List Will Provide</option>
+                </select>
+            </div>
+        </div>*@
+
+                                @*<div class="col-lg-6 col-md-12">
+        <div>
+            <label class="form-label">Regulated Entity</label>
+            <select class="form-control h-10" id="Loanprovider_head" placeholder="Select Regulated Entity">
+            </select>
+        </div>
+        </div>*@
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Regulated Entity</label>
+                                        <select class="form-control h-10" id="regulated_entity">
+                                            <option value="">Select Regulated Entity</option>
+                                            <option value="Bank">Bank</option>
+                                            <option value="NBFC">NBFC</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Loan Type<span style="color:#ff0000">*</span></label>
+                                        <select class="form-control h-10" id="loan_type">
+                                            <option value="">Select Loan Type</option>
+                                            <option value="Secured">Secured</option>
+                                            <option value="Unsecured">Unsecured</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Tenure<span style="color:#ff0000">*</span></label>
+                                        <select class="form-control h-10" id="loan_tenure">
+                                            <option value="">Select Tenure</option>
+                                            <option value="<Month">Less than 1 Month</option>
+                                            <option value="Month">1 Month</option>
+                                            <option value="2 Months">2 Months</option>
+                                            <option value="3 Months">3 Months</option>
+                                            <option value="4 Months">4 Months</option>
+                                            <option value="5 Months">5 Months</option>
+                                            <option value="6 Months">6 Months</option>
+                                            <option value="6 - 12 Months">6 - 12 Months</option>
+                                            <option value="12 - 24 Months">12 - 24 Months</option>
+                                            <option value="More than 24 Months">More than 24 Months</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Delenquency Bucket / Delay(in days)<span style="color:#ff0000">*</span></label>
+                                        <select class="form-control h-10" id="loan_delay">
+                                            <option value="">Select Delay(in days)</option>
+                                            <option value="Less than 15 days">Less than 15 days</option>
+                                            <option value="15 to 30 days">15 to 30 days</option>
+                                            <option value="31 to 60 days">31 to 60 days</option>
+                                            <option value="61 to 90 days">61 to 90 days</option>
+                                            <option value="91 to 180 days">91 to 180 days</option>
+                                            <option value="More than 180 days">More than 180 days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Total Emi's</label>
+                                        <input type="number" id="toatl_emis" placeholder="Total Emi's'" class="form-control   " />
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Loan Account Number</label>
+                                        <input type="text" value="" id="loan_account_number" placeholder="Enter loan account number" class="form-control   " />
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Principal Amount<span style="color:#ff0000">*</span></label>
+                                        <input type="number" id="principal_amount" placeholder="Enter Principal amaount" min="0" value="" onkeyup="keyupFunction()" class="form-control    " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Processing Fee</label>
+                                        <input type="number" id="processing_fee" onkeyup="keyupFunction()" min="0" value="0" placeholder="Enter Processing fee" class="form-control    " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Insurance</label>
+                                        <input type="number" id="Insurance_amount" onkeyup="keyupFunction()" min="0" value="0" placeholder="Insurance Amount" class="form-control    " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Interest </label>
+                                        <input type="number" id="interest" onkeyup="keyupFunction()" min="0" value="0" placeholder=" Interest" class="form-control    " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Other charges</label>
+                                        <input type="number" id="other_charges" onkeyup="keyupFunction()" min="0" value="0" placeholder="Other Charges" class="form-control    " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Total Amount o/s<span style="color:#ff0000">*</span></label>
+                                        <input type="number" id="total_outstanding_amount" placeholder="Total amount" class="form-control   " />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-control-label">Reason looking for settlement</label>
+                                        <select class="form-control h-10" id="settlement_reason">
+                                            <option value="0">Select Reason</option>
+                                            <option value="No job / Job loss">No job / Job loss</option>
+                                            <option value="High charges">High charges</option>
+                                            <option value="Need time to pay">Need time to pay</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div>
+                                        <label class="form-label">Upload loan related documents</label>
+                                        <input type="file" id="loan_document" class="form-control  " />
+                                    </div>
+                                </div>
+                                <p id="err" class="alert-danger"></p>
+                                <div class="col-lg-6 col-md-12 mt-3">
+                                    <div>
+                                        <button type="button" class="btn bg-primary text-white m-4" onclick="saveLoanInfo();" data-mdb-ripple-color="dark">Continue for settlement</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

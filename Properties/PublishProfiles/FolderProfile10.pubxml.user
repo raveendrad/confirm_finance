@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\pkp_pub</_PublishTargetUrl>
+    <History>False|2022-11-02T17:23:35.2929098Z;False|2022-11-02T22:52:37.0801291+05:30;False|2022-11-02T22:51:52.7029905+05:30;False|2022-11-02T22:50:35.4893142+05:30;False|2022-11-02T22:49:52.1887800+05:30;False|2022-11-02T22:48:56.8389146+05:30;False|2022-11-02T22:47:12.7501318+05:30;False|2022-11-02T22:43:14.3636429+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

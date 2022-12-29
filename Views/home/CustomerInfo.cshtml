@@ -1,0 +1,312 @@
+﻿
+@{
+    ViewBag.Title = "CustomerInfo";
+    Layout = "~/Views/shared/_LayoutPage2.cshtml";
+}
+<script src="~/assets/site_js/Register.js"></script>
+<link href="~/assets/css/templatemo-finance-business.css" rel="stylesheet" />
+<script src="~/assets/site_js/Register.js"></script>
+
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<style>
+    label {
+        margin-bottom: 0px !important;
+    }
+
+    .form-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-check-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        font-size: 12px;
+    }
+
+    .col-lg-6 {
+        margin-top: 0px
+    }
+
+    input[type] {
+        border-radius: 5px;
+    }
+
+    .form-check {
+        margin-right: 0px;
+    }
+
+    .form-control-label {
+        font-weight: bold;
+    }
+
+    .modal-dialog {
+        margin-top: 80px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<div class="page-heading1 header-text">
+    <div class="container">
+
+    </div>
+</div>
+
+
+<div class="container-fluid" id="Cinfo">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card p-4 mt-4">
+                <div class="row g-3">
+                    <div class="col-12 mb-2">
+                        <h3 class="font-bold">Personal details...</h3>
+                    </div>
+                    <input type="hidden" value="0" id="customer_id" />
+                    <div class="col-lg-6 col-md-12 ">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Full Name<span style="color:#ff0000">*</span></label>
+                            <input type="text" id="cname" class="form-control form-control-lg shadow" placeholder="Enter Full Name" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 ">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Mobile Number<span style="color:#ff0000">*</span></label>
+                            <input type="number" id="contact_number" class="form-control form-control-lg shadow" placeholder="Enter Mobile Number" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">E-mail Id<span style="color:#ff0000">*</span></label>
+
+                            <input type="email" id="email" class="form-control form-control-lg shadow" placeholder="Enter your Email-Id" autocomplete="off" name="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev4">Monthly Income</label>
+
+                            <input type="text" id="your_earning_per_month" class="form-control form-control-lg shadow" placeholder="Enter Monthly Income" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Full Address</label>
+
+                            <input type="text" id="full_address" class="form-control shadow form-control-lg" placeholder="Enter Full Address" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev5">Pin Code<span style="color:#ff0000">*</span></label>
+
+                            <input type="number" id="pincode" placeholder="Enter your pin code" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">City</label>
+
+                            <input type="text" id="city" class="form-control shadow form-control-lg" placeholder="Enter your City" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplev5">State</label>
+
+                            <input type="text" id="state" class="form-control shadow form-control-lg" placeholder="Enter your state" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Aadhaar Card<span style="color:#ff0000">*</span></label>
+
+                            <input type="number" id="adhaar_card" placeholder="Enter your Aadhaar number" onKeyPress="if(this.value.length==12) return false;" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div>
+                            <label class="form-label" for="form3Examplea2">Pan Card<span style="color:#ff0000">*</span></label>
+
+                            <input type="text" id="pan_card" placeholder="Enter your Pan card number" class="form-control shadow form-control-lg" />
+                        </div>
+                    </div>
+                    <p id="msg" class="alert-danger"></p>
+                    <div class="col-12 ">
+                        <button type="button" class="btn btn-lg text-white mx-4" style="background: #A020F0" onclick="saveItem();" data-mdb-ripple-color="dark">Save</button>
+                        @*<button class="btn btn-outline-light   shadow " style="background: #A020F0" type="submit" data-bs-toggle="modal" data-bs-target="#loaninfo">Add Loan</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-5">
+            @*<div class="col-lg-8 " style="position:relative;display:inline;">
+                    <div>
+                        <div id="content_area">
+                        </div>
+
+                    </div>
+
+                </div>*@
+
+            <div class="row my-4">
+                <div class="col-md-3 col-4 mobile-small text-center " style="background-image: url('/assets/img/mobile-1.png'); background-repeat:no-repeat;padding-top:120px;padding-bottom:120px;background-size:100% 100%;">
+                    <span class="fs-4 fs font-weight-bold"> Resolve/ Refinance Your debt</span><br />
+                    <span class="fs-1">
+                        <a class="btn  shadow font-weight-bold mt-2 text-white btn-lg" href="~/home/ItWorks" style="background-color: #A020F0;">Enter</a>
+                    </span>
+                </div>
+                <div class="col-md-3 col-4 mobile-small text-center " style="background-image: url('/assets/img/mobile-1.png'); background-repeat: no-repeat; padding-top: 120px; padding-bottom: 120px; background-size: 100% 100%;">
+                    <span class="fs-4 fs font-weight-bold"> Savings & Investment</span>
+                    <span class="fs-1">
+                        <button class="btn  shadow font-weight-bold mt-2 text-white btn-lg" id="btnTarrakki" style="background-color: #A020F0;margin-top:50px !important" data-bs-toggle="modal" data-bs-target="#invest">Enter</button>
+                    </span>
+                </div>
+                <div class="col-md-3 col-4 mobile-small text-center " style="background-image: url('/assets/img/mobile-1.png'); background-repeat: no-repeat; padding-top: 120px; padding-bottom: 120px; background-size: 100% 100%;">
+                    <span class="fs-4 fs  font-weight-bold"> Get Credit</span>
+                    <span class="fs-1">
+                        <button class="btn  shadow font-weight-bold mt-2 text-white btn-lg" style="background-color: #A020F0;margin-top:80px !important" data-bs-toggle="modal" data-bs-target="#invest">Enter</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@*<div class="modal " id="invest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center text-white font-weight-bold" style="background-color: #A020F0">
+                <h5 class="modal-title" id="staticBackdropLabel">Savings & Investments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="~/assets/img/comingsoon.gif" />
+                <p class="fs-4 text-center text-black"> Watchout this space for more, launching soon....</p>
+                <button class="btn  shadow font-weight-bold mt-2 text-white btn-lg" style="background-color: #A020F0;" data-bs-toggle="modal" data-bs-target="#">Join Now!<i class="fa fa-right-long" style="padding-left:10px"></i></button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#email").keyup(function () {
+            if (validateEmail()) {
+                
+                $("#email").css("border", "2px solid green");
+                // and set label
+                $("#emailMsg").html("<p class='text-success'>Validated</p>");
+            }
+            else {
+                // if the email is not validated
+                // set border red
+                $("#email").css("border", "2px solid red");
+                $("#emailMsg").html("<p class='text-danger'>Un-validated</p>");
+            }
+            /*buttonState();*/
+        });
+
+    });
+
+    //function buttonState(){
+    //	if(validateEmail() && validatePassword()){
+    //		// if the both email and password are validate
+    //		// then button should show visible
+    //		$("#btn").show();
+    //	}else{
+    //		// if both email and pasword are not validated
+    //		// button state should hidden
+    //		$("#btn").hide();
+    //	}
+    //}
+    function validateEmail() {
+        // get value of input email
+        var email = $("#email").val();
+        // use reular expression
+        var reg = /^\w+([-+.']\w+)*\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (reg.test(email)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        var custId = localStorage.getItem("customer_id");
+        $.ajax({
+            url: 'https://localhost:44306/api/Customer?customer_id=' + custId,
+            type: 'GET',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+            },
+            success: function (result) {
+                localStorage.setItem("custMobile", result[0].mobile_number);
+                localStorage.setItem("email", result[0].email);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            },
+            complete: function () {
+            },
+        });
+        $("#mobile_number").text(localStorage.getItem("mobile_number"));
+        $("#email").text(localStorage.getItem("email"));
+        $("#btnTarrakki").click(function () {
+            debugger;
+            var Tarrakki = {
+                grant_type: "client_credentials",
+                client_id: "nWMyl7HyYligrW7lTxllLBUtXstINBaqJzJ5DVSg",
+                client_secret: "yCYkM3AWtzRutWe6n7YOLoVuIYt52YfvoqzW52hTOLm16kx5CJyCH3t2XTE4yIYuwikkEXH9GOcy7oHy2bAgpLHmqwEt8B7A3AdJKy7AASe0rMlMaJOlsyAHs9VmgqL1",
+            };
+           // tarrakki.initializeApp(Tarrakki);
+            debugger;
+            var mobile = localStorage.getItem("mobile_number");
+            var email = localStorage.getItem("email");
+            var requestData =
+            {
+                "mobile": mobile,
+                "email": email,
+            };
+            var jsonData = JSON.stringify(Tarrakki);
+            $.ajax({
+                url: 'https://confirm-uat.tarrakki.com/access_token',
+                type: 'POST',
+                dataType: 'json',
+                data: jsonData,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                },
+                success: function (result) {
+                    debugger;
+                    console.log(result);
+                    
+                },
+
+            });
+        });
+    });
+    </script>

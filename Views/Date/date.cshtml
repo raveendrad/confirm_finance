@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "date";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+
+<script src="~/assets/site_js/CountryState.js"></script>
+<div id="total-msg"></div>
+<div id="htmlView">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding: 0;">
+                <div id="mkslider">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>-->
+    <!-- Add two inputs for "phoneNumber" and "code" -->
+    <!--<input type="text" id="phoneNumber" />
+    <input type="text" id="code" />-->
+
+    <!-- Add two buttons to submit the inputs -->
+    <!--<button id="sign-in-button" onclick="submitPhoneNumberAuth()">
+        SIGN IN WITH PHONE
+    </button>
+    <button id="confirm-code" onclick="submitPhoneNumberAuthCode()">
+        ENTER CODE
+    </button>-->
+
+    <!-- Add a container for reCaptcha -->
+    <!--<div id="recaptcha-container"></div>-->
+
+    <!-- Add the latest firebase dependecies from CDN -->
+    <!--<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+
+    <script>
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyAnHZ52hYNRA0fV3hUxVL7Y0EAC3gn79-k",
+            authDomain: "confirmfinance-8019a.firebaseapp.com",
+            projectId: "confirmfinance-8019a",
+            storageBucket: "confirmfinance-8019a.appspot.com",
+            messagingSenderId: "613982490352",
+            appId: "1:613982490352:web:b1274367bcfc1979013c35",
+            measurementId: "G-CZYZ9E8M5K"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+            "recaptcha-container",
+            {
+                size: "normal",
+                callback: function (response) {
+                    submitPhoneNumberAuth();
+                }
+            }
+        );
+
+
+        function submitPhoneNumberAuth() {
+            debugger;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var appVerifier = window.recaptchaVerifier;
+            firebase
+                .auth()
+                .signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+
+        function submitPhoneNumberAuthCode() {
+            var code = document.getElementById("code").value;
+            confirmationResult
+                .confirm(code)
+                .then(function (result) {
+                    var user = result.user;
+                    console.log(user);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                console.log("USER LOGGED IN");
+            } else {
+     
+                console.log("USER NOT LOGGED IN");
+            }
+        });
+    </script>
+</body>
+</html>-->
+<head>
+    <script src="~/assets/site_js/CountryState.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div><h2>Get City State from Pincode</h2></div>
+        <div>&nbsp;</div>
+        <form autocomplete="off" method="post" id="frmPinCode" style="text-align:center;">
+            <div>
+                <input type="text" class="textbox" name="pincode" id="pincode" placeholder="Enter Pincode" autocomplete="new-password">
+                <button type="button" class="btn bg-primary text-white m-4" onclick="get_details();" data-mdb-ripple-color="dark">Save</button>
+            </div>
+            <div>&nbsp;</div>
+           
+        </form>
+    </div>
+</body>
